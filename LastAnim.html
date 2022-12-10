@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      .sliderParent {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .portal {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 0;
+        transition: all 1.5s;
+      }
+
+      .portalWrapper {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        transition: all 1.5s;
+
+        align-items: center;
+      }
+
+      .portalCLip {
+        clip-path: inset(10px round 50% 50% 0px 0px);
+        width: 250px;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        transition: all 1.5s;
+        align-items: center;
+      }
+
+      .borderclip {
+        clip-path: inset(10px round 50% 50% 0px 0px);
+        width: 270px;
+        height: 320px;
+        display: flex;
+        justify-content: center;
+        transition: all 1.5s;
+        background: #ffffff;
+        align-items: center;
+      }
+
+      .active {
+        width: 100%;
+        height: 100%;
+        transition: all 1.5s;
+        position: absolute;
+        z-index: 0;
+      }
+
+      .active .portalCLip {
+        clip-path: inset(0px 0px);
+      }
+
+      @keyframes flot {
+        0% {
+          text-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+          transform: translatey(0px);
+        }
+        50% {
+          text-shadow: 0 25px 15px 0px rgba(0, 0, 0, 1);
+          transform: translatey(-15px);
+        }
+        100% {
+          text-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+          transform: translatey(0px);
+        }
+      }
+
+      @keyframes flotX {
+        0% {
+          transform: translatex(0px);
+        }
+        50% {
+          transform: translatex(-10px);
+        }
+        100% {
+          transform: translatex(0px);
+        }
+      }
+
+      .watertext {
+        position: relative;
+        z-index: 10;
+      }
+
+      #AnimText1,
+      #AnimText2,
+      #AnimText3,
+      #AnimText4,
+      #AnimText5{
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="sliderParent">
+      <div class="portalWrapper portal5">
+        <div class="borderclip bclip5">
+          <div class="portalCLip pclip5">
+            <iframe
+              class="portal"
+              width="100%"
+              height="100%"
+              src="https://momento360.com/e/u/1d7c32dacd214affaa10bf562fd5bab1?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=75&size=medium"
+              frameborder="0"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="portalWrapper portal2">
+        <div class="borderclip bclip2">
+          <div class="portalCLip pclip2">
+            <iframe
+              class="portal"
+              width="100%"
+              height="100%"
+              src="https://momento360.com/e/u/306c4d7a5532454caaae2f5cae7c31b8?utm_campaign=embed&utm_source=other&heading=144.51&pitch=16.5&field-of-view=75&size=medium"
+              frameborder="0"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="portalWrapper portal3">
+        <div class="borderclip bclip3">
+          <div class="portalCLip pclip3">
+            <iframe
+              class="portal"
+              width="100%"
+              height="100%"
+              src="https://momento360.com/e/u/631d3a11319c490e98b43041a99a9a5a?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=75&size=medium"
+              frameborder="0"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="portalWrapper portal4">
+        <div class="borderclip bclip4">
+          <div class="portalCLip pclip4">
+            <iframe
+              class="portal"
+              width="100%"
+              height="100%"
+              src="https://momento360.com/e/u/b120e94a5d2448bb99fb6b2b74a85dd1?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=75&size=medium"
+              frameborder="0"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="portalWrapper portal1">
+        <div class="borderclip bclip1">
+          <div class="portalCLip pclip1">
+            <iframe
+              class="portal"
+              width="100%"
+              height="100%"
+              src="https://momento360.com/e/u/3ca8c89704f147abba5afe3ee31c1a5f?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=79&size=medium&display-plan=true"
+              frameborder="0"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="watertext" id="AnimText1"></div>
+      <div class="watertext" id="AnimText2"></div>
+      <div class="watertext" id="AnimText3"></div>
+      <div class="watertext" id="AnimText4"></div>
+      <div class="watertext" id="AnimText5"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/blotter.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1501143/liquidDistortMaterial.js"></script>
+
+    <script>
+      const portal1 = document.querySelector(".portal1");
+      const portal2 = document.querySelector(".portal2");
+      const portal3 = document.querySelector(".portal3");
+      const portal4 = document.querySelector(".portal4");
+      const portal5 = document.querySelector(".portal5");
+
+      const pclip1 = document.querySelector(".pclip1");
+      const pclip2 = document.querySelector(".pclip2");
+      const pclip3 = document.querySelector(".pclip3");
+      const pclip4 = document.querySelector(".pclip4");
+      const pclip5 = document.querySelector(".pclip5");
+
+      const bclip1 = document.querySelector(".bclip1");
+      const bclip2 = document.querySelector(".bclip2");
+      const bclip3 = document.querySelector(".bclip3");
+      const bclip4 = document.querySelector(".bclip4");
+      const bclip5 = document.querySelector(".bclip5");
+
+
+      const AnimText1 = document.querySelector("#AnimText1");
+      const AnimText2 = document.querySelector("#AnimText2");
+      const AnimText3 = document.querySelector("#AnimText3");
+      const AnimText4 = document.querySelector("#AnimText4");
+      const AnimText5 = document.querySelector("#AnimText5");
+
+
+
+      let Slide1 = false;
+      let Slide2 = false;
+      let Slide3 = false;
+      let Slide4 = false;
+      let Slide5 = false;
+
+
+
+
+      let text = new Blotter.Text("Lorem 1111 Ipsum", {
+        family: "'ARIAL', serif",
+        size: 100,
+        weight: 100,
+        fill: "#fff",
+      });
+
+      let material = new Blotter.LiquidDistortMaterial();
+
+      material.uniforms.uSpeed.value = 0.42;
+
+      material.uniforms.uVolatility.value = 0.012;
+
+      material.uniforms.uSeed.value = 0.5;
+
+      let blotter = new Blotter(material, {
+        texts: text,
+      });
+
+      let elem = document.getElementById("AnimText1");
+      let scope = blotter.forText(text);
+
+      scope.appendTo(elem);
+
+
+      
+
+      let text2 = new Blotter.Text("Lorem 2222 Ipsum", {
+        family: "'ARIAL', serif",
+        size: 100,
+        weight: 100,
+        fill: "#fff",
+      });
+
+
+      let blotter2 = new Blotter(material, {
+        texts: text2,
+      });
+
+      let elem2 = document.getElementById("AnimText2");
+      let scope2 = blotter2.forText(text2);
+
+      scope2.appendTo(elem2);
+
+
+
+      
+
+      let text3 = new Blotter.Text("Lorem 3333 Ipsum", {
+        family: "'ARIAL', serif",
+        size: 100,
+        weight: 100,
+        fill: "#fff",
+      });
+
+
+      let blotter3 = new Blotter(material, {
+        texts: text3,
+      });
+
+      let elem3 = document.getElementById("AnimText3");
+      let scope3 = blotter3.forText(text3);
+
+      scope3.appendTo(elem3);
+
+
+
+
+      
+      let text4 = new Blotter.Text("Lorem 4444 Ipsum", {
+        family: "'ARIAL', serif",
+        size: 100,
+        weight: 100,
+        fill: "#fff",
+      });
+
+
+      let blotter4 = new Blotter(material, {
+        texts: text4,
+      });
+
+      let elem4 = document.getElementById("AnimText4");
+      let scope4 = blotter4.forText(text4);
+
+      scope4.appendTo(elem4);
+
+
+           
+      let text5 = new Blotter.Text("Lorem 5555 Ipsum", {
+        family: "'ARIAL', serif",
+        size: 100,
+        weight: 100,
+        fill: "#fff",
+      });
+
+
+      let blotter5 = new Blotter(material, {
+        texts: text5,
+      });
+
+      let elem5 = document.getElementById("AnimText5");
+      let scope5 = blotter5.forText(text5);
+
+      scope5.appendTo(elem5);
+
+
+      
+
+
+
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          portal2.classList.remove("active");
+          portal4.classList.remove("active");
+          portal5.classList.remove("active");
+          portal3.classList.remove("active");
+
+          pclip5.style.width = "250px";
+          pclip5.style.height = "300px";
+
+          bclip5.style.width = "270px";
+          bclip5.style.height = "320px";
+
+          portal1.classList.add("active");
+          pclip1.style.width = "10000px";
+          pclip1.style.height = "12000px";
+
+          bclip1.style.width = "10020px";
+          bclip1.style.height = "12020px";
+
+          portal1.style.zIndex = "0";
+
+          setTimeout(function name() {
+            portal2.style.display = "flex";
+
+            portal2.style.zIndex = "3";
+          }, 800);
+
+          setTimeout(function name() {
+            AnimText1.style.display = 'block';
+          }, 1000);
+        }, 500);
+      });
+
+      portal1.addEventListener("click", function (e) {
+        portal2.classList.remove("active");
+        portal4.classList.remove("active");
+        portal5.classList.remove("active");
+        portal3.classList.remove("active");
+        AnimText5.style.display = 'none';
+
+
+        pclip5.style.width = "250px";
+        pclip5.style.height = "300px";
+
+        bclip5.style.width = "270px";
+        bclip5.style.height = "320px";
+
+        portal1.classList.add("active");
+        pclip1.style.width = "10000px";
+        pclip1.style.height = "12000px";
+
+        bclip1.style.width = "10020px";
+        bclip1.style.height = "12020px";
+
+        portal1.style.zIndex = "0";
+
+        setTimeout(function name() {
+          portal2.style.display = "flex";
+
+          portal2.style.zIndex = "3";
+        }, 800);
+
+        setTimeout(function name() {
+          AnimText1.style.display = 'block';
+        }, 1000);
+      });
+
+      portal2.addEventListener("click", function (e) {
+        portal1.classList.remove("active");
+        portal3.classList.remove("active");
+        portal4.classList.remove("active");
+        portal5.classList.remove("active");
+        AnimText1.style.display = 'none';
+
+
+        portal1.style.display = "none";
+        pclip1.style.width = "250px";
+        pclip1.style.height = "300px";
+
+        bclip1.style.width = "270px";
+        bclip1.style.height = "320px";
+
+        portal2.classList.add("active");
+        pclip2.style.width = "10000px";
+        pclip2.style.height = "12000px";
+
+        bclip2.style.width = "10020px";
+        bclip2.style.height = "12020px";
+
+        portal2.style.zIndex = "0";
+
+        setTimeout(function name() {
+          portal3.style.display = "flex";
+
+          portal3.style.zIndex = "3";
+        }, 800);
+
+        setTimeout(function name() {
+          AnimText2.style.display = 'block';
+
+         
+        }, 1000);
+      });
+
+      portal3.addEventListener("click", function (e) {
+        portal1.classList.remove("active");
+        portal2.classList.remove("active");
+        portal4.classList.remove("active");
+        portal5.classList.remove("active");
+        AnimText2.style.display = 'none';
+
+
+        portal2.style.display = "none";
+        pclip2.style.width = "250px";
+        pclip2.style.height = "300px";
+
+        bclip2.style.width = "270px";
+        bclip2.style.height = "320px";
+
+        portal3.classList.add("active");
+        pclip3.style.width = "10000px";
+        pclip3.style.height = "12000px";
+
+        bclip3.style.width = "10020px";
+        bclip3.style.height = "12020px";
+
+        portal3.style.zIndex = "0";
+
+        setTimeout(function name() {
+          portal4.style.display = "flex";
+
+          portal4.style.zIndex = "3";
+        }, 800);
+
+        setTimeout(function name() {
+          AnimText3.style.display = 'block';
+
+          
+        }, 1000);
+      });
+
+      portal4.addEventListener("click", function (e) {
+        portal1.classList.remove("active");
+        portal2.classList.remove("active");
+        portal3.classList.remove("active");
+        portal5.classList.remove("active");
+        AnimText3.style.display = 'none';
+
+
+        portal3.style.display = "none";
+        pclip3.style.width = "250px";
+        pclip3.style.height = "300px";
+
+        bclip3.style.width = "270px";
+        bclip3.style.height = "320px";
+
+        portal4.classList.add("active");
+        pclip4.style.width = "10000px";
+        pclip4.style.height = "12000px";
+
+        bclip4.style.width = "10020px";
+        bclip4.style.height = "12020px";
+
+        portal4.style.zIndex = "0";
+
+        setTimeout(function name() {
+          portal5.style.display = "flex";
+
+          portal5.style.zIndex = "3";
+        }, 800);
+
+        setTimeout(function name() {
+          AnimText4.style.display = 'block';
+        }, 1000);
+      });
+
+      portal5.addEventListener("click", function (e) {
+        portal1.classList.remove("active");
+        portal2.classList.remove("active");
+        portal3.classList.remove("active");
+        portal4.classList.remove("active");
+        AnimText4.style.display = 'none';
+
+
+        portal4.style.display = "none";
+        pclip4.style.width = "250px";
+        pclip4.style.height = "300px";
+
+        bclip4.style.width = "270px";
+        bclip4.style.height = "320px";
+
+        portal5.classList.add("active");
+        pclip5.style.width = "10000px";
+        pclip5.style.height = "12000px";
+
+        bclip5.style.width = "10020px";
+        bclip5.style.height = "12020px";
+
+        portal5.style.zIndex = "0";
+
+        setTimeout(function name() {
+          portal1.style.display = "flex";
+
+          portal1.style.zIndex = "3";
+        }, 800);
+
+        setTimeout(function name() {
+          AnimText5.style.display = 'block';
+
+        }, 1000);
+      });
+
+      if (Slide1) {
+        text = text1;
+      }
+
+      if (Slide2) {
+        text = text2;
+      }
+
+      if (Slide3) {
+        text = text3;
+      }
+
+      if (Slide4) {
+        text = text4;
+      }
+
+      if (Slide5) {
+        text = text5;
+      }
+
+      function loadText1(IsActive) {
+        if (IsActive) {
+          let text = new Blotter.Text("Lorem Ipsum doler smit", {
+            family: "'ARIAL', serif",
+            size: 80,
+            weight: 100,
+            fill: "#fff",
+          });
+
+          let material = new Blotter.LiquidDistortMaterial();
+
+          material.uniforms.uSpeed.value = 0.5;
+
+          material.uniforms.uVolatility.value = 0.014;
+
+          material.uniforms.uSeed.value = 0.5;
+
+          let blotter = new Blotter(material, {
+            texts: text,
+          });
+
+          let elem = document.getElementById("watertext");
+          let scope = blotter.forText(text);
+
+          scope.appendTo(elem);
+        }
+      }
+
+      function loadText2(IsActive) {
+        if (IsActive) {
+          let text = new Blotter.Text("Second 2nd doler smit", {
+            family: "'ARIAL', serif",
+            size: 80,
+            weight: 100,
+            fill: "#fff",
+          });
+
+          let material = new Blotter.LiquidDistortMaterial();
+
+          material.uniforms.uSpeed.value = 0.5;
+
+          material.uniforms.uVolatility.value = 0.014;
+
+          material.uniforms.uSeed.value = 0.5;
+
+          let blotter = new Blotter(material, {
+            texts: text,
+          });
+
+          let elem = document.getElementById("watertext");
+          let scope = blotter.forText(text);
+
+          scope.appendTo(elem);
+        }
+      }
+
+      /* let material = new Blotter.LiquidDistortMaterial();
+
+      material.uniforms.uSpeed.value = 0.5;
+
+      material.uniforms.uVolatility.value = 0.014;
+
+      material.uniforms.uSeed.value = 0.5;
+
+      let blotter = new Blotter(material, {
+        texts: text,
+      });
+
+      let elem = document.getElementById("watertext");
+      let scope = blotter.forText(text);
+
+      scope.appendTo(elem);*/
+    </script>
+  </body>
+</html>
