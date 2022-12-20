@@ -1,0 +1,134 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sliderParent {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .portalContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: all 0.5s;
+  }
+
+  .bgPortal {
+    position: absolute;
+  }
+
+  .portalCLip {
+    clip-path: inset(10px round 50% 50% 0px 0px);
+    width: 250px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1.2s;
+  }
+
+  .portal {
+    position: absolute;
+    z-index: 10;
+  }
+
+  .borderclip {
+    clip-path: inset(10px round 50% 50% 0px 0px);
+    width: 270px;
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+    align-items: center;
+    transition: all 1.2s;
+  }
+
+  .window {
+    filter: url(#wavesEffect);
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background: #ffffff00;
+  }
+
+  @keyframes windowbgopening {
+    0% {
+      width: 270px;
+      height: 320px;
+    }
+    20% {
+      width: 230px;
+      height: 273px;
+    }
+    100% {
+      width: 10020px;
+      height: 12020px;
+    }
+  }
+
+  @keyframes windowopening {
+    0% {
+      width: 250px;
+      height: 300px;
+    }
+    20% {
+      width: 210px;
+      height: 251px;
+    }
+    100% {
+      width: 10000px;
+      height: 12000px;
+    }
+  }
+
+  .active .borderclip {
+    animation: windowbgopening 2s forwards;
+  }
+
+  .active .portalCLip {
+    animation: windowopening 2s forwards;
+  }
+
+  .portalContainer2,
+  .portalContainer3,
+  .portalContainer4 {
+    z-index: -1;
+  }
+
+  .watertext {
+    position: relative;
+    z-index: 10;
+  }
+
+  #AnimText2,
+  #AnimText3,
+  #AnimText4,
+  #AnimText5 {
+    display: none;
+  }
+
+  svg {
+    visibility: hidden;
+  }
+
+  .water {
+    filter: url(#water);
+
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    z-index: 200;
+    font-size: 60px;
+    font-weight: 500;
+    color: #ffffff;
+  }

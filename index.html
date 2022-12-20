@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+ 
+  </head>
+
+  <body>
+    <div class="sliderParent">
+      <div class="portalContainer portalContainer1">
+        <iframe
+          class="bgPortal"
+          width="100%"
+          height="100%"
+          src="https://momento360.com/e/u/3ca8c89704f147abba5afe3ee31c1a5f?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=79&size=medium&display-plan=true"
+          frameborder="0"
+        ></iframe>
+
+        <div class="borderclip bclip1">
+          <div class="portalCLip pclip1">
+            <iframe
+              class="portal"
+              width="100%"
+              height="100%"
+              src="https://momento360.com/e/u/1d7c32dacd214affaa10bf562fd5bab1?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=75&size=medium"
+              frameborder="0"
+            ></iframe>
+
+            <div class="window portal1"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portalContainer portalContainer2">
+        <iframe
+          class="bgPortal"
+          width="100%"
+          height="100%"
+          src="https://momento360.com/e/u/1d7c32dacd214affaa10bf562fd5bab1?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=75&size=medium"
+          frameborder="0"
+        ></iframe>
+
+        <div class="borderclip bclip2">
+          <div class="portalCLip pclip2">
+            <iframe
+              class="portal"
+              width="100%"
+              height="100%"
+              src="https://momento360.com/e/u/631d3a11319c490e98b43041a99a9a5a?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=75&size=medium"
+              frameborder="0"
+            ></iframe>
+
+            <div class="window portal2"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portalContainer portalContainer3">
+        <iframe
+          class="bgPortal"
+          width="100%"
+          height="100%"
+          src="https://momento360.com/e/u/631d3a11319c490e98b43041a99a9a5a?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=75&size=medium"
+          frameborder="0"
+        ></iframe>
+
+        <div class="borderclip bclip3">
+          <div class="portalCLip pclip3">
+            <iframe
+              class="portal"
+              width="100%"
+              height="100%"
+              src="https://momento360.com/e/u/b120e94a5d2448bb99fb6b2b74a85dd1?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=75&size=medium"
+              frameborder="0"
+            ></iframe>
+
+            <div class="window portal3"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portalContainer portalContainer4">
+        <iframe
+          class="bgPortal"
+          width="100%"
+          height="100%"
+          src="https://momento360.com/e/u/b120e94a5d2448bb99fb6b2b74a85dd1?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=75&size=medium"
+          frameborder="0"
+        ></iframe>
+
+        <div class="borderclip bclip4">
+          <div class="portalCLip pclip4">
+            <iframe
+              class="portal"
+              width="100%"
+              height="100%"
+              src="https://momento360.com/e/u/3ca8c89704f147abba5afe3ee31c1a5f?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=79&size=medium&display-plan=true"
+              frameborder="0"
+            ></iframe>
+
+            <div class="window portal4"></div>
+          </div>
+        </div>
+      </div>
+
+      <svg width="1" height="1" xmlns="http://www.w3.org/2000/svg">
+        <filter id="water">
+          <feTurbulence
+            id="water-turbulence"
+            numOctaves="10"
+            seed="1"
+            baseFrequency="0.5  1  0.5 "
+          />
+          <feDisplacementMap
+            id="water-displacement"
+            scale="20"
+            in="SourceGraphic"
+          />
+        </filter>
+
+        <animate
+          xlink:href="#water-turbulence"
+          attributeName="baseFrequency"
+          values="0.001; 0.002; 0.0025; 0.003;  0.0025;   0.002; 0.001;"
+          dur="10s"
+          begin="0s"
+          repeatCount="indefinite"
+        />
+      </svg>
+      <p id="AnimText1" class="water">Lorem 1111 dolor sit.</p>
+      <p id="AnimText2" class="water">Lorem 2222 dolor sit.</p>
+      <p id="AnimText3" class="water">
+        Lorem 3333<br />
+        dolor sit.
+      </p>
+      <p id="AnimText4" class="water">Lorem 4444 dolor sit.</p>
+      <p id="AnimText5" class="water">Lorem 5555 dolor sit.</p>
+      <p></p>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
